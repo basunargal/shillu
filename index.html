@@ -1,0 +1,62 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Dedicated song of the day</title>
+        <style>
+            body {
+                background-color: #f1f1f1;
+                background-image: url('bird.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                border: 20px solid pink;
+                padding: 20px;
+                margin: 0;
+            }
+            #content {
+                text-align: center;
+                font-size: 30px;
+                margin-top: 50px;
+                color: white;
+                text-shadow: 2px 2px 4px #000000;
+            }
+            #song-link {
+                color: blue;
+            }
+            #countdown {
+                font-size: 40px;
+                margin-top: 20px;
+            }
+        </style>
+        <script>
+            function updateClock() {
+                var now = new Date();
+                var deadline = new Date("February 29, 2024 00:00:00 GMT+0530");
+                var timeLeft = deadline - now;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "Time's up!";
+                } else {
+                    var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    
+                    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+                        + minutes + "m " + seconds + "s ";
+                }
+            }
+            
+            var timer = setInterval(updateClock, 1000);
+        </script>
+    </head>
+    <body>
+        <h1 style="text-align: center; font-size: 50px;">Cannot wait!!</h1>
+        <div id="countdown" style="text-align: center;"></div>
+        <div id="content">
+            <a id="song-link" href="https://www.youtube.com/watch?v=8tyqLHyx0PI">Click here to listen to the song</a>
+        </div>
+    </body>
+    </html>
+    
